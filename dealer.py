@@ -2,6 +2,7 @@ class Dealer:
 
     def __init__(self):
         self.cards = []
+        self.cards_values = []
 
     def __repr__(self):
         string_cards = []
@@ -19,6 +20,17 @@ class Dealer:
         self.cards.remove(card)
         card = [str(i) for i in card]
         print("{card} has been removed of the dealer's inventory".format(card = " of ".join(card)) + "\n")
+    
+    def set_cards_values(self):
+        self.cards_values = []
+        for card in self.cards:
+            if type(card[0]) is str:
+                if card[0] == "Ace":
+                  self.cards_values.append(11)
+                else:
+                    self.cards_values.append(10)
+            else:
+                self.cards_values.append(card[0])
 
 """
 dealer = Dealer()

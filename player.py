@@ -2,10 +2,12 @@
 # Player has its name, its budget and list of cards
 
 class Player:
+  
   def __init__(self, name, budget):
     self.name = name
     self.budget = budget
     self.cards = []
+    self.cards_values = []
 
   def __repr__(self):
     string_cards = []
@@ -38,10 +40,16 @@ class Player:
     card = [str(i) for i in card]
     print("{name} has gained a new card: ".format(name = self.name) + " of ".join(card) + "\n")
   
-  def remove_card(self, card):
-    self.cards.remove(card)
-    card = [str(i) for i in card]
-    print("{card} has been removed of {name}'s inventory".format(card = " of ".join(card), name = self.name ) + "\n")
+  def set_cards_values(self):
+    self.cards_values = []
+    for card in self.cards:
+      if type(card[0]) is str:
+        if card[0] == "Ace":
+          self.cards_values.append(11)
+        else:
+          self.cards_values.append(10)
+      else:
+        self.cards_values.append(card[0])
 
 """ 
 player_1 = Player("Ivan", 1000)
