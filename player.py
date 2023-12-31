@@ -1,11 +1,9 @@
 # Class representing a player
-# Player has its name, its budget and list of cards
-
 class Player:
   
-  def __init__(self, name, budget):
+  def __init__(self, name):
     self.name = name
-    self.budget = budget
+    self.budget = 1000
     self.cards = []
     self.cards_values = []
 
@@ -50,6 +48,9 @@ class Player:
           self.cards_values.append(10)
       else:
         self.cards_values.append(card[0])
+    while 11 in self.cards_values and sum(self.cards_values) > 21:
+      self.cards_values[self.cards_values.index(11)] = 1
+    
 
 """ 
 player_1 = Player("Ivan", 1000)

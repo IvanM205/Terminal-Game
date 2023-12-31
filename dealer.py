@@ -1,3 +1,4 @@
+# Class representing a dealer
 class Dealer:
 
     def __init__(self):
@@ -31,6 +32,8 @@ class Dealer:
                     self.cards_values.append(10)
             else:
                 self.cards_values.append(card[0])
+        while 11 in self.cards_values and sum(self.cards_values) > 21:
+            self.cards_values[self.cards_values.index(11)] = 1
 
 """
 dealer = Dealer()
